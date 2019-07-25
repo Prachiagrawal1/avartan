@@ -1,9 +1,12 @@
 <?php 
-
 	$db_username = 'root';
 	$db_password = 'prachi';
 	$db_name = 'rss_feed';
 	session_start();
+	include('function.php');
+	login_not_required();
+	//
+	// Variable to store any message by default khali hai
 	$error_message = '';
 
 	if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -27,8 +30,10 @@
 
 			if($response['password'] === md5($password)){
 				$_SESSION['username'] = $username;
-				// yaha se dashboard me redirect karenge
+				header('Location: dashboard.php');
+				
 			}else{
+				// Wrong password case or mismatch like user doesn't exist
 				$error_message = 'Please check your username and password once again';
 			}
 
@@ -110,6 +115,9 @@
 								<i class="fa fa-lock"></i>
 								<a href="#" class="pass-view fa fa-eye"></a>
 							</div>
+							<p>
+								<?php if(isset($error_message) && $error_message != null) echo $error_message ?>
+							</p>
 							
 							<div class="form-group">
 								<div class="flexbox align-items-center">

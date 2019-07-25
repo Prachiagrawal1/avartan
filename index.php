@@ -2,10 +2,12 @@
 
 // We do this everywhere whereever we want to use session variables
 session_start();
-
+if(isset($_SESSION['username']) && $_SESSION['username']!==null){
+    header('Location:dashboard.php');
+} else {
 // For now lets redirect it to login page no matter what
 header('Location: login.php');
-
+} 
 // No we need to create a table for the users
 
 /*
