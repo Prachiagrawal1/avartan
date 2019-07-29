@@ -1,7 +1,5 @@
 <?php
-	session_start();
 	include('function.php');
-	// yaha gadbad hai
 	login_required();
 ?>
 <!DOCTYPE html>
@@ -66,22 +64,28 @@
 				  
 				    <!-- Start Dashboard-->
 					<li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
-					  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Dashboard" data-parent="#exampleAccordion">
+					  <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#Dashboard" data-parent="#exampleAccordion">
 						<i class="ti ti-dashboard"></i>
 						<span class="nav-link-text">Dashboard</span>
 					  </a>
 					  <ul class="sidenav-second-level collapse" id="Dashboard">
 						<li>
-						  <a href="index.html">Dashboard</a>
+						  <a href="index.html">All Posts</a>
 						</li>
 						<li>
-						  <a href="index-2.html">Dashboard 2</a>
+						  <a href="index-2.html">Published Posts</a>
 						</li>
 						<li>
-						  <a href="index-3.html">Dashboard 3</a>
+						  <a href="index-3.html">Saved Posts</a>
 						</li>
 						<li>
-						  <a href="index-4.html">Dashboard 4</a>
+						  <a href="index-4.html">Declined Posts</a>
+						</li>
+						<li>
+						  <a href="index-4.html">URLS</a>
+						</li>
+						<li>
+						  <a href="index-4.html">Keywords</a>
 						</li>
 					  </ul>
 					</li>
@@ -197,86 +201,54 @@
 				<!-- /row -->
 				
 				<!-- row -->
-				<div class="row">
-				
-					<!-- Line Chart -->
-					<div class="col-md-8 col-sm-12">
-						<div class="card">
-							<div class="card-header">
-								<h4 class="mb-0">Line Chart</h4>
-							</div>
-							<div class="card-body">
-								<div class="chart" id="line-chart" style="height:260px;"></div>
-							</div>
-						</div>
-					</div>
-					
-					<!-- instagram_quatro -->
-					<div class="col-md-4 col-sm-12">
-						<div class="blox_instagram_quatro">
-							<div class="padd-15 blox_instagram_quatro_container">
-								<div class="blox_image_box">
-								
-									<div class="blox_profile_pic">
-										<img src="http://via.placeholder.com/180x180" alt="">
-									</div>
-									
-									<ul class="blox_image_list">
-										<li>
-											<a href="#">
-												<img src="http://via.placeholder.com/970x554" alt="">
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="http://via.placeholder.com/970x554" alt="">
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="http://via.placeholder.com/970x554" alt="">
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="http://via.placeholder.com/970x554" alt="">
-											</a>
-										</li>
-									</ul>
-								</div>
-								<div class="blox_instagram_info">
-									<div class="blox_profile_name">@karimbenzema</div>
-									<div class="blox_follow_count">21m followers</div>
-									<div class="blox_follow_btn">
-										<a target="#" class="btn outline-secondary width-100" href="#">Follow</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-				</div>
 				<!-- /.row -->
 				
 				<!-- row -->
 				<div class="row">
 				
 					<!-- Order Status -->
-					<div class="col-md-8 col-sm-12">
+					<div class="col-md-4 col-sm-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="mb-0">Order Status</h4>
+								<h4 class="mb-0">RSS Feeds</h4>
+								<a href="#add_url" class="btn-modal" data-toggle="modal" data-target="#add_url"><i class="ti-plus"></i></a>							</div>
+							<div class="card-body padd-0">
+								<div class="table-responsive">
+									<table class="table table-lg table-hover">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Link</th>
+												<th>Created At</th>
+											</tr>
+										</thead>
+										
+										<tbody>
+											<tr>
+												<td>ABC</td>
+												<td>#258475</td>
+												<td><div class="label cl-success bg-success-light">Paid</div></td>   
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="mb-0">Posts</h4>
 							</div>
 							<div class="card-body padd-0">
 								<div class="table-responsive">
 									<table class="table table-lg table-hover">
 										<thead>
 											<tr>
-												<th>Name</th>
-												<th>Product ID</th>
+												<th>ID</th>
+												<th>URL</th>
 												<th>Status</th>
-												<th>Price</th>
-												<th>Date Created</th>
 											</tr>
 										</thead>
 										
@@ -284,35 +256,8 @@
 											<tr>
 												<td><a href="#"><img src="http://via.placeholder.com/180x180" class="avatar" alt="Avatar">Livka Lice</a></td>
 												<td>#258475</td>
-												<td><div class="label cl-success bg-success-light">Paid</div></td>                
-												<td>$ 310</td>
-												<td>04/10/2013</td>  
+												<td><div class="label cl-success bg-success-light">Paid</div></td>   
 											</tr>
-											
-											<tr>
-												<td><a href="#"><img src="http://via.placeholder.com/180x180" class="avatar" alt="Avatar">Likez Perfume</a></td>
-												<td>#249578</td>
-												<td><div class="label cl-warning bg-warning-light">Pending</div></td>							
-												<td>$ 584.14</td>
-												<td>05/08/2014</td> 
-											</tr>
-											
-											<tr>
-												<td><a href="#"><img src="http://via.placeholder.com/180x180" class="avatar" alt="Avatar">Tiver Perfume</a></td>
-												<td>#248712</td>
-												<td><div class="label cl-danger bg-danger-light">Cancel</div></td>  
-												<td>$ 710.5</td>
-												<td>11/05/2015</td>                                          
-											</tr>
-											
-											<tr>
-												<td><a href="#"><img src="http://via.placeholder.com/180x180" class="avatar" alt="Avatar">White Blix Bag</a></td>
-												<td>#287246</td>
-												<td><div class="label cl-success bg-success-light">Paid</div></td>
-												<td>$ 482.70</td>
-												<td>06/09/2016</td>
-											</tr>
-											
 										</tbody>
 									</table>
 								</div>
@@ -321,152 +266,23 @@
 					</div>
 					
 					<!-- Browser Stats -->
-					<div class="col-md-4 col-sm-12">
+					<div class="col-md-2 col-sm-12">
 						<div class="card">
 							<div class="card-header">
-								<h6>Browser Stats</h6>
-								<a href="#" class="show-more" title=""><i class="ti-arrow-right"></i></a>
+								<h6>Keywords</h6>
+								<a href="#add_keyword" class="btn-modal" data-toggle="modal" data-target="#add_keyword"><i class="ti-plus"></i></a>
 							</div>
 							<div class="ground-list todo-browser ground-list-hove">
 								<div class="ground ground-single-list padd-0">
 									<a class="todo todo-default" href="#">
 									  <span class="ct-title">
-										<img src="http://via.placeholder.com/80x80" class="img-responsive" alt="">Google Chrome
+										Google Chrome
 									  </span>
-									  <span class="font-medium">92%</span>
 									</a>
 								</div>
 								
-								<div class="ground ground-single-list padd-0">
-									<a class="todo todo-default" href="#">
-									  <span class="ct-title">
-										<img src="http://via.placeholder.com/80x80" class="img-responsive" alt="">Inter Explorer
-									  </span>
-									  <span class="font-medium">80%</span>
-									</a>
-								</div>
-								
-								<div class="ground ground-single-list padd-0">
-									<a class="todo todo-default" href="#">
-									  <span class="ct-title">
-										<img src="http://via.placeholder.com/80x80" class="img-responsive" alt="">FireFox
-									  </span>
-									  <span class="font-medium">40%</span>
-									</a>
-								</div>
-								
-								<div class="ground ground-single-list padd-0">
-									<a class="todo todo-default" href="#">
-									  <span class="ct-title">
-										<img src="http://via.placeholder.com/80x80" class="img-responsive" alt="">Safari
-									  </span>
-									  <span class="font-medium">52%</span>
-									</a>
-								</div>
-								
-								<div class="ground ground-single-list padd-0">
-									<a class="todo todo-default" href="#">
-									  <span class="ct-title">
-										<img src="http://via.placeholder.com/80x80" class="img-responsive" alt="">Opera
-									  </span>
-									  <span class="font-medium">40%</span>
-									</a>
-								</div>
 							</div>
 						</div>	
-					</div>
-					
-				</div>
-				<!-- /.row -->
-				
-				<!-- row -->
-				<div class="row">
-				
-					<!-- Instagram Users -->
-					<div class="col-md-4 col-sm-12">
-						<div class="blox_instagram_preview mb-4">
-						
-							<div class="padd-10 blox_instagram_preview_container">
-								<div class="blox_image_box">
-									<ul class="blox_image_list">
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-									</ul>
-								</div>
-								
-								<div class="blox_instagram_info">
-									<div class="blox_profile_pic">
-										<img src="http://via.placeholder.com/180x180" alt="">
-									</div>
-									<div class="blox_profile_name">@ashleybenson</div>
-									<div class="blox_follow_count">17m followers</div>
-									<div class="blox_follow_btn">
-										<a target="_blank" class="btn outline-secondary width-100" href="#">Follow</a>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-					
-					<!-- Instagram Users -->
-					<div class="col-md-4 col-sm-12">
-						<div class="blox_instagram_preview mb-4">
-						
-							<div class="padd-10 blox_instagram_preview_container">
-								<div class="blox_image_box">
-									<ul class="blox_image_list">
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-									</ul>
-								</div>
-								
-								<div class="blox_instagram_info">
-									<div class="blox_profile_pic">
-										<img src="http://via.placeholder.com/500x286" alt="">
-									</div>
-									<div class="blox_profile_name">@Rosiliorti</div>
-									<div class="blox_follow_count">12m followers</div>
-									<div class="blox_follow_btn">
-										<a target="_blank" class="btn outline-secondary width-100" href="#">Follow</a>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-					
-					<!-- Instagram Users -->
-					<div class="col-md-4 col-sm-12">
-						<div class="blox_instagram_preview mb-4">
-						
-							<div class="padd-10 blox_instagram_preview_container">
-								<div class="blox_image_box">
-									<ul class="blox_image_list">
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-										<li><img src="http://via.placeholder.com/500x286" alt=""></li>
-									</ul>
-								</div>
-								
-								<div class="blox_instagram_info">
-									<div class="blox_profile_pic">
-										<img src="http://via.placeholder.com/500x286" alt="">
-									</div>
-									<div class="blox_profile_name">@danielluker</div>
-									<div class="blox_follow_count">10m followers</div>
-									<div class="blox_follow_btn">
-										<a target="_blank" class="btn outline-secondary width-100" href="#">Follow</a>
-									</div>
-								</div>
-							</div>
-							
-						</div>
 					</div>
 					
 				</div>
@@ -714,6 +530,60 @@
 				</div>
 			</div>
 			<!-- /Switcher -->
+
+			<div class="modal modal-box-2 fade" id="add_keyword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				 <div class="modal-dialog">
+					<div class="modal-content" id="myModalLabel">
+						<div class="modal-header theme-bg">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<h3>Add A <span>Keyword</span></h3>
+							<form name="sentMessage" class="contactForm">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Keyword" >
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-lg-12 text-center">
+										<div id="success-msg">The keyword has been added successfully</div>
+										<button type="submit" class="btn modal-btn">Add</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal modal-box-2 fade" id="add_url" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				 <div class="modal-dialog">
+					<div class="modal-content" id="myModalLabel">
+						<div class="modal-header theme-bg">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<h3>Add An <span>url</span></h3>
+							<form name="sentMessage" class="contactForm">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="url" >
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-lg-12 text-center">
+										<div id="success-msg">The url has been added successfully</div>
+										<button type="submit" class="btn modal-btn">Add</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 			
 			<!-- Scroll to Top Button-->  
 			<a class="scroll-to-top rounded cl-white gredient-bg" href="#page-top">

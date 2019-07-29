@@ -2,7 +2,6 @@
 	$db_username = 'root';
 	$db_password = 'prachi';
 	$db_name = 'rss_feed';
-	session_start();
 	include('function.php');
 	login_not_required();
 	//
