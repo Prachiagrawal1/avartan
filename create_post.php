@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<title>RSS-Feed | Dashboard</title>
+		<title>RSS-Feed | Add Post</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
 					<li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
 					  <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#Dashboard" data-parent="#exampleAccordion">
 						<i class="ti ti-dashboard"></i>
-						<span class="nav-link-text">Dashboard</span>
+						<span class="nav-link-text">Fetch Posts</span>
 					  </a>
 					  <ul class="sidenav-second-level collapse" id="Dashboard">
 						<li>
@@ -133,65 +133,49 @@
 				<!-- Title & Breadcrumbs-->
 				<div class="row page-titles">
 					<div class="col-md-12 align-self-center">
-						<h4 class="theme-cl">Dashboard</h4>
+						<h4 class="theme-cl">Fetch Posts</h4>
 					</div>
 				</div>
 				<!-- Title & Breadcrumbs-->
 				
 				<!-- row -->
 				<div class="row">
-					
-					<div class="col-md-3 col-sm-6">
+					<div class="col-md-6 col-sm-6">
 						<div class="card">
 							<div class="card-body">
-								<div class="float-right">
-									<i class="icon ti-user gredient-cl font-30"></i>
-								</div>
-								<div class="widget-detail">
-									<h4 class="mb-1"><?php echo total_post_count() ?></h4>
-									<span>All Posts</span>
+                                <div class="form-group">
+								    <select id="selected_url" class="form-control custom-select">
+                                        <option selected>Select any feed</option>
+                                        <?php 
+                                            $feeds = get_all_feeds();
+                                            foreach($feeds as $feed){
+                                        ?>
+                                            <option value="<?php  echo $feed['id'] ?>"><?php echo $feed['url'] ?></option>
+                                        <?php 
+                                            }
+                                        ?>
+                                    </select>
 								</div>
 							</div>
 						</div>
 					</div>
 					
-					<div class="col-md-3 col-sm-6">
+					<div class="col-md-6 col-sm-6">
 						<div class="card">
 							<div class="card-body">
-								<div class="float-right">
-									<i class="ti-shopping-cart-full gredient-cl font-30"></i>
-								</div>
-								<div class="widget-detail">
-									<h4 class="mb-1"><?php echo published_post_count() ?></h4>
-									<span>Published Posts</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-3 col-sm-6">
-						<div class="card">
-							<div class="card-body">
-								<div class="float-right">
-									<i class="icon ti-medall gredient-cl font-30"></i>
-								</div>
-								<div class="widget-detail">
-									<h4 class="mb-1"><?php echo declined_post_count() ?></h4>
-									<span>Declined Posts</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-3 col-sm-6">
-						<div class="card">
-							<div class="card-body">
-								<div class="float-right">
-									<i class="icon ti-briefcase gredient-cl font-30"></i>
-								</div>
-								<div class="widget-detail">
-									<h4 class="mb-1"><?php echo saved_post_count() ?></h4>
-									<span>Saved Posts</span>
+                                <div class="form-group">
+                                    <?php 
+                                        $keywords = get_all_keywords();
+                                        foreach($keywords as $keyword){
+                                    ?>
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="selected_keywords" name="keywords" value="<?php echo $keyword['id'] ?>" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description"><?php echo $keyword['word'] ?></span>
+                                        </label>
+                                    <?php 
+                                        }
+                                    ?>
 								</div>
 							</div>
 						</div>
@@ -199,111 +183,98 @@
 					
 				</div>
 				<!-- /row -->
+
+                <div class="row">
+                    <div class="offset-lg-4 col-lg-4 offset-md-3 col-md-6 col-sm-12">
+                        <button type="button" id="fetch_posts_button"  class="btn btn-block btn-rounded btn-primary">Fetch Post</button>
+                    </div>
+                </div>
+
+                <br>
 				
-				<!-- row -->
-				<!-- /.row -->
-				
-				<!-- row -->
 				<div class="row">
-				
-					<!-- Order Status -->
-					<div class="col-md-4 col-sm-12">
+					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="mb-0">RSS Feeds</h4>
-								<a href="#add_url" class="btn-modal" data-toggle="modal" data-target="#add_url"><i class="ti-plus"></i></a>							</div>
-							<div class="card-body padd-0">
-								<div class="table-responsive">
-									<table class="table table-lg table-hover">
+								<h4>Posts</h4>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive"> 
+									<table class="table table-bordered">
 										<thead>
 											<tr>
-												<th>ID</th>
-												<th>Link</th>
-												<th>Created At</th>
+												<th>Row</th>
+												<th>First Name</th>
+												<th>Last Name</th>
+												<th>Email</th>
+												<th>Contact</th>
+												<th>Registerd</th>
 											</tr>
 										</thead>
-										
 										<tbody>
-											<?php
-												$feeds = get_latest_feeds();
-												foreach($feeds as $feed){
-											?>
 											<tr>
-												<td><?php echo $feed['id'] ?></td>
-												<td><?php echo $feed['url']?> </td>
-												<td><?php echo $feed['created_at'] ?></td>   
+												<td>1</td>
+												<td>John</td>
+												<td>Carter</td>
+												<td>johncarter@mail.com</td>
+												<td>+91 235 658 7458</td>
+												<td>Aug 10 2017</td>
 											</tr>
-											<?php 
-												}
-											?>
+											<tr>
+												<td>2</td>
+												<td>Peter</td>
+												<td>Parker</td>
+												<td>peterparker@mail.com</td>
+												<td>+91 235 658 7458</td>
+												<td>Aug 10 2017</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>John</td>
+												<td>Rambo</td>
+												<td>johnrambo@mail.com</td>
+												<td>+91 235 658 7458</td>
+												<td>Aug 10 2017</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>John</td>
+												<td>Rambo</td>
+												<td>johnrambo@mail.com</td>
+												<td>+91 235 658 7458</td>
+												<td>Aug 10 2017</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>John</td>
+												<td>Rambo</td>
+												<td>johnrambo@mail.com</td>
+												<td>+91 235 658 7458</td>
+												<td>Aug 10 2017</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>John</td>
+												<td>Rambo</td>
+												<td>johnrambo@mail.com</td>
+												<td>+91 235 658 7458</td>
+												<td>Aug 10 2017</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>John</td>
+												<td>Rambo</td>
+												<td>johnrambo@mail.com</td>
+												<td>+91 235 658 7458</td>
+												<td>Aug 10 2017</td>
+											</tr>
 										</tbody>
 									</table>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="col-md-6 col-sm-12">
-						<div class="card">
-							<div class="card-header">
-								<h4 class="mb-0">Posts</h4>
-								<a href="create_post.php" class="btn" ><i class="ti-plus"></i></a>
-
-							</div>
-							<div class="card-body padd-0">
-								<div class="table-responsive">
-									<table class="table table-lg table-hover">
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>URL</th>
-												<th>Status</th>
-											</tr>
-										</thead>
-										
-										<tbody>
-											<tr>
-												<td><a href="#"><img src="http://via.placeholder.com/180x180" class="avatar" alt="Avatar">Livka Lice</a></td>
-												<td>#258475</td>
-												<td><div class="label cl-success bg-success-light">Paid</div></td>   
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<!-- Browser Stats -->
-					<div class="col-md-2 col-sm-12">
-						<div class="card">
-							<div class="card-header">
-								<h6>Keywords</h6>
-								<a href="#add_keyword" class="btn-modal" data-toggle="modal" data-target="#add_keyword"><i class="ti-plus"></i></a>
-							</div>
-
-							<?php 
-								$keywords = get_latest_keywords();
-								foreach($keywords as $keyword){
-							?>
-							<div class="ground-list todo-browser ground-list-hove">
-								<div class="ground ground-single-list padd-0">
-									<a class="todo todo-default" href="#">
-									  <span class="ct-title">
-										<?php echo $keyword['word'] ?>
-									  </span>
-									</a>
-								</div>
-							</div>
-							<?php
-
-								}
-							 ?>
-						</div>	
-					</div>
-					
 				</div>
-				<!-- /.row -->
 				
 
 			</div>  
@@ -547,115 +518,6 @@
 				</div>
 			</div>
 			<!-- /Switcher -->
-
-			<div class="modal modal-box-2 fade" id="add_keyword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				 <div class="modal-dialog">
-					<div class="modal-content" id="myModalLabel">
-						<div class="modal-header theme-bg">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						</div>
-						<div class="modal-body">
-							<h3>Add a <span>Keyword</span></h3>
-							
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" id="keyword_box_modal" class="form-control" placeholder="Keyword" >
-										</div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="col-lg-12 text-center">
-										<div id="success-msg">The keyword has been added successfully</div>
-										<button type="submit" onclick="addKeyword()" class="btn modal-btn">Add</button>
-									</div>
-								</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="modal modal-box-2 fade" id="add_url" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				 <div class="modal-dialog">
-					<div class="modal-content" id="myModalLabel">
-						<div class="modal-header theme-bg">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						</div>
-						<div class="modal-body">
-							<h3>Add a <span>Feed URL</span></h3>
-							
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" id="feeds_modal_input" class="form-control" placeholder="url" >
-										</div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="col-lg-12 text-center">
-										<div id="success-msg">The url has been added successfully</div>
-										<button type="submit" onclick="addFeed()" class="btn modal-btn">Add</button>
-									</div>
-								</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal modal-box-2 fade" id="add_post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				 <div class="modal-dialog">
-					<div class="modal-content" id="myModalLabel">
-						<div class="modal-header theme-bg">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						</div>
-						<div class="modal-body">
-							<h3>Add a <span>Post</span></h3>
-							
-								<div class="row">
-									<div class="col-md-6 col-sm-12">
-										<div class="form-group">
-											<select class="custom-select mb-1">
-												<option selected>Select any feed</option>
-												<?php 
-													$feeds = get_all_feeds();
-													foreach($feeds as $feed){
-												?>
-													<option value="<?php  echo $feed['id'] ?>"><?php echo $feed['url'] ?></option>
-												<?php 
-													}
-												?>
-											</select>
-										</div>
-									</div>
-									<div class="col-md-6 col-sm-12">
-										<div class="form-group">
-											<?php 
-													$keywords = get_all_keywords();
-													foreach($keywords as $keyword){
-												?>
-													<label class="custom-control custom-checkbox">
-														<input type="checkbox" name="keywords" value="<?php echo $keyword['id'] ?>" class="custom-control-input">
-														<span class="custom-control-indicator"></span>
-														<span class="custom-control-description"><?php echo $keyword['word'] ?></span>
-													</label>
-												<?php 
-													}
-												?>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="clearfix"></div>
-									<div class="col-lg-12 text-center">
-										<div id="success-msg">The url has been added successfully</div>
-										<button type="submit" onclick="addFeed()" class="btn modal-btn">Add</button>
-									</div>
-								</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			
 			
 			<!-- Scroll to Top Button-->  
 			<a class="scroll-to-top rounded cl-white gredient-bg" href="#page-top">
@@ -698,38 +560,38 @@
 				}
 				$(document).ready(function(){
 					$('.dropdown-toggle').dropdown();
-				});
-				function addKeyword() {
-					var keywords = $('#keyword_box_modal').val();
-					$.ajax({
-						method: 'POST',
-						url: 'add_keyword.php',
-						data: {'keywords': keywords},
-						success: function(response){
-							location.reload(); 
-							console.log(response);
-						},
-						error: function(response){
-							location.reload(); 
-							console.log(response);
-						}	
-					});
-				}
+                    $("#fetch_posts_button").click(function() {
+                        var feed_url_id;
+                        $.each($("#selected_url option:selected"), function(){            
+                            feed_url_id = $(this).val();
+                        });
 
-				function addFeed(){
-					var feeds = $('#feeds_modal_input').val();
-					$.ajax({
-						method: 'POST',
-						url: 'add_feeds.php',
-						data: {'feeds': feeds},
-						success: function(response){
-							console.log(response);
-						},
-						error: function(response){
-							console.log(response);
-						}	
-					});
-				}
+                        var keywords_ary = [];
+
+                        $("input:checkbox:checked").map(function() {
+                            keywords_ary.push(Number(this.value));
+                        });
+                        console.log(keywords_ary);
+
+                        data = {
+                            "feed_url_id": feed_url_id,
+                            "keywords_list": keywords_ary
+                        };
+
+                        $.ajax({
+                            method: 'POST',
+                            url: 'get_posts.php',
+                            data: data,
+                            success: function(response){
+                                console.log(response);
+                            },
+                            error: function(response){
+                                console.log(response);
+                            }	
+                        });
+                    });
+				});
+				
 			</script>
 			
 	  </div>
