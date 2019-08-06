@@ -136,10 +136,11 @@
 
     function get_keywords_by_ids($ids){
         $db = connect_db();
-        $corrected_ids = implode(',', $ids);
-        $stmt = $db->prepare('select * from keywords where id in (:ids)');
-        $stmt->execute(['ids' => $corrected_ids]);
-        $response = $stmt->fetchAll();
+        $in  = str_repeat('?,', count($ids) - 1) . '?';
+        $sql = "SELECT * FROM keywords WHERE id IN ($in)";
+        $stm = $db->prepare($sql);
+        $stm->execute($ids);
+        $response = $stm->fetchAll();
         return $response;
     }
 
@@ -149,10 +150,40 @@
             $stmt = $db->prepare('insert into posts (url, content, title, status) values (:url, :content, :title, "saved")');
             $content = $entry->children("content",true);
             $content = (string)$content->encoded;
-            //$response = $stmt->execute(['url' => $entry->url, 'content' => $content, 'title' => $entry->title]);
-            $response = $stmt->execute(['url' => 'test', 'content' => 'test', 'title' => 'test']);
+            $response = $stmt->execute(['url' => $entry->url, 'content' => $content, 'title' => $entry->title]);
             return $response;
         }catch(PDOException $e){
             die($e);
         }
     }
+    function get_all_posts(){
+        $db = connect_db();
+        $stmt = $db->prepare('select * from posts');
+        $stmt->execute();
+        $response = $stmt->fetchAll();
+        return $response;
+    }
+    function get_declined_posts(){
+        $db = connect_db();
+        $stmt = $db->prepare('select * from posts where status="declined"');
+        $stmt->execute();
+        $response = $stmt->fetchAll();
+        return $response;
+    }
+
+    function get_saved_posts(){
+        $db = connect_db();
+        $stmt = $db->prepare('select * from posts where status="saved"');
+        $stmt->execute();
+        $response = $stmt->fetchAll();
+        return $response;
+    }
+
+    function get_published_posts(){
+        $db = connect_db();
+        $stmt = $db->prepare('select * from posts where status = "published"');
+        $stmt->execute();
+        $response = $stmt->fetchAll();
+        return $response;
+    }
+

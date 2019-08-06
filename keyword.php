@@ -201,7 +201,7 @@
 				<!-- /row -->
 			</div>  
 			<!-- /.content-wrapper -->
-			<div class="row">
+            <div class="row">
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
@@ -213,29 +213,28 @@
 										<thead>
 											<tr>
 												<th>ID</th>
-												<th>Title</th>
-												<th>Link</th>
-												<th>Pub_date</th>
-												<th>status</th>
+												<th>User_ID</th>
+												<th>Keyword</th>
+												<th>Created_at</th>
+												<th>Modified_at</th>
 											</tr>
 										</thead>
 										<tbody>
-											<?php 
-											$posts = get_all_posts(); 
+                                        <?php 
+											$posts = get_all_keywords(); 
 											foreach($posts as $post){
 											?>
 											<tr>
-												<th><?php echo $post['id'] ?></th>
-												<th><?php echo $post['title'] ?></th>
-												<th><?php echo $post['url'] ?></th>
-												<th><?php echo $post['pub_date'] ?></th>
-												<th><?php echo $post['status'] ?></th>
+                                                <th><?php echo $post['id'] ?></th>
+												<th><?php echo $post['user_id'] ?></th>
+												<th><?php echo $post['word'] ?></th>
+												<th><?php echo $post['created_at'] ?></th>
+												<th><?php echo $post['modified_at'] ?></th>
 											</tr>
 											<?php
 											}
 											?>
-											
-										</tbody>
+																					</tbody>
 									</table>
 								</div>
 							</div>

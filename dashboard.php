@@ -70,22 +70,22 @@
 					  </a>
 					  <ul class="sidenav-second-level collapse" id="Dashboard">
 						<li>
-						  <a href="index.html">All Posts</a>
+						  <a href="all_post.php">All Posts</a>
 						</li>
 						<li>
-						  <a href="index-2.html">Published Posts</a>
+						  <a href="published_post.php">Published Posts</a>
 						</li>
 						<li>
-						  <a href="index-3.html">Saved Posts</a>
+						  <a href="saved_post.php">Saved Posts</a>
 						</li>
 						<li>
-						  <a href="index-4.html">Declined Posts</a>
+						  <a href="declined_post.php">Declined Posts</a>
 						</li>
 						<li>
-						  <a href="index-4.html">URLS</a>
+						  <a href="url.php">URLS</a>
 						</li>
 						<li>
-						  <a href="index-4.html">Keywords</a>
+						  <a href="keyword.php">Keywords</a>
 						</li>
 					  </ul>
 					</li>
@@ -547,7 +547,32 @@
 				</div>
 			</div>
 			<!-- /Switcher -->
-
+			<div class="modal modal-box-2 fade" id="add_url" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				 <div class="modal-dialog">
+					<div class="modal-content" id="myModalLabel">
+						<div class="modal-header theme-bg">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<h3>Add a <span>Feed URL</span></h3>
+							
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" id="feeds_modal_input" class="form-control" placeholder="url" >
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-lg-12 text-center">
+										<div id="success-msg">The url has been added successfully</div>
+										<button type="submit" onclick="addFeed()" class="btn modal-btn">Add</button>
+									</div>
+								</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="modal modal-box-2 fade" id="add_keyword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				 <div class="modal-dialog">
 					<div class="modal-content" id="myModalLabel">
@@ -575,32 +600,7 @@
 				</div>
 			</div>
 
-			<div class="modal modal-box-2 fade" id="add_url" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				 <div class="modal-dialog">
-					<div class="modal-content" id="myModalLabel">
-						<div class="modal-header theme-bg">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						</div>
-						<div class="modal-body">
-							<h3>Add a <span>Feed URL</span></h3>
-							
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" id="feeds_modal_input" class="form-control" placeholder="url" >
-										</div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="col-lg-12 text-center">
-										<div id="success-msg">The url has been added successfully</div>
-										<button type="submit" onclick="addFeed()" class="btn modal-btn">Add</button>
-									</div>
-								</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<div class="modal modal-box-2 fade" id="add_post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				 <div class="modal-dialog">
 					<div class="modal-content" id="myModalLabel">
@@ -705,13 +705,15 @@
 						method: 'POST',
 						url: 'add_keyword.php',
 						data: {'keywords': keywords},
+						cache: false,
 						success: function(response){
-							location.reload(); 
 							console.log(response);
+							window.location.reload();
 						},
 						error: function(response){
-							location.reload(); 
 							console.log(response);
+							window.location.reload();
+
 						}	
 					});
 				}
@@ -722,11 +724,18 @@
 						method: 'POST',
 						url: 'add_feeds.php',
 						data: {'feeds': feeds},
+						cache: false,
 						success: function(response){
 							console.log(response);
+							window.location.reload();
+
+
 						},
 						error: function(response){
 							console.log(response);
+							window.location.reload();
+
+
 						}	
 					});
 				}

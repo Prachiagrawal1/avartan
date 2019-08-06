@@ -203,71 +203,15 @@
 									<table class="table table-bordered">
 										<thead>
 											<tr>
-												<th>Row</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Email</th>
-												<th>Contact</th>
-												<th>Registerd</th>
+												<th>ID</th>
+												<th>Title</th>
+												<th>Link</th>
+												<th>Pub_date</th>
+												<th>status</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td>John</td>
-												<td>Carter</td>
-												<td>johncarter@mail.com</td>
-												<td>+91 235 658 7458</td>
-												<td>Aug 10 2017</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Peter</td>
-												<td>Parker</td>
-												<td>peterparker@mail.com</td>
-												<td>+91 235 658 7458</td>
-												<td>Aug 10 2017</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>John</td>
-												<td>Rambo</td>
-												<td>johnrambo@mail.com</td>
-												<td>+91 235 658 7458</td>
-												<td>Aug 10 2017</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>John</td>
-												<td>Rambo</td>
-												<td>johnrambo@mail.com</td>
-												<td>+91 235 658 7458</td>
-												<td>Aug 10 2017</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>John</td>
-												<td>Rambo</td>
-												<td>johnrambo@mail.com</td>
-												<td>+91 235 658 7458</td>
-												<td>Aug 10 2017</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>John</td>
-												<td>Rambo</td>
-												<td>johnrambo@mail.com</td>
-												<td>+91 235 658 7458</td>
-												<td>Aug 10 2017</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>John</td>
-												<td>Rambo</td>
-												<td>johnrambo@mail.com</td>
-												<td>+91 235 658 7458</td>
-												<td>Aug 10 2017</td>
-											</tr>
+											<div id="selected_posts"></div>
 										</tbody>
 									</table>
 								</div>
@@ -560,6 +504,7 @@
 				}
 				$(document).ready(function(){
 					$('.dropdown-toggle').dropdown();
+
                     $("#fetch_posts_button").click(function() {
                         var feed_url_id;
                         $.each($("#selected_url option:selected"), function(){            
@@ -579,13 +524,18 @@
                         };
 
                         $.ajax({
-                            method: 'POST',
                             url: 'get_posts.php',
-                            data: data,
+							method: 'POST',
+							dataType : "json",
+                            data: {data: data},
+							cache: false,
                             success: function(response){
+								alert(response);
                                 console.log(response);
                             },
                             error: function(response){
+								alert(response);
+
                                 console.log(response);
                             }	
                         });

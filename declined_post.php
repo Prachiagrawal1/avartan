@@ -201,7 +201,7 @@
 				<!-- /row -->
 			</div>  
 			<!-- /.content-wrapper -->
-			<div class="row">
+            <div class="row">
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
@@ -220,8 +220,8 @@
 											</tr>
 										</thead>
 										<tbody>
-											<?php 
-											$posts = get_all_posts(); 
+                                        <?php 
+											$posts = get_declined_posts(); 
 											foreach($posts as $post){
 											?>
 											<tr>
@@ -234,8 +234,7 @@
 											<?php
 											}
 											?>
-											
-										</tbody>
+											</tbody>
 									</table>
 								</div>
 							</div>
